@@ -1,0 +1,19 @@
+.page {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2rem clamp(1rem, 2vw, 2rem);
+  padding-top: calc(var(--nav-h) + clamp(4rem, 10vw, 9rem));
+  padding-bottom: var(--section-y);
+  min-height: 80vh;
+}
+.title { grid-column: 1 / span 6; font-size: var(--fs-h1); line-height: 0.95; letter-spacing: -0.02em; align-self: start; }
+.body { grid-column: 7 / span 6; display: grid; gap: 1.1rem; justify-items: start; color: var(--c-text-2); line-height: 1.75; }
+.body h2 { font-size: var(--fs-h3); color: var(--c-text); margin-top: 1.5rem; }
+.body :global(.btn) { margin-top: 2rem; }
+.credits { list-style: none; padding: 0; width: 100%; border-top: 1px solid var(--c-border); font-size: var(--fs-small); }
+.credits li { display: flex; justify-content: space-between; gap: 1rem; padding-block: 0.55rem; border-bottom: 1px solid var(--c-border); }
+.credits span { color: var(--c-text); }
+
+@media (max-width: 1023px) {
+  .title, .body { grid-column: 1 / -1; }
+}

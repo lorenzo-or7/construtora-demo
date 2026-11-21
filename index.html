@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>ATRIUM — Engenharia & Incorporação | Protótipo conceitual</title>
+    <meta name="description" content="ATRIUM é uma construtora fictícia criada pela Or7.dev para demonstrar uma experiência digital de alto padrão: empreendimentos, processo, materialidade e contato." />
+    <meta name="theme-color" content="#F3F0E9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#151A17" media="(prefers-color-scheme: dark)" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="%BASE_URL%favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="ATRIUM" />
+    <meta property="og:title" content="ATRIUM — Espaços que atravessam o tempo" />
+    <meta property="og:description" content="Protótipo conceitual de construtora de alto padrão, desenvolvido pela Or7.dev. Marca e empreendimentos fictícios." />
+    <meta property="og:image" content="%BASE_URL%og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preload" as="image" type="image/webp" href="%BASE_URL%images/hero-1600.webp" media="(min-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" type="image/webp" href="%BASE_URL%images/hero-mobile-800.webp" media="(max-width: 767px)" fetchpriority="high" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('atrium-theme');
+          if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.dataset.theme = t;
+        } catch (e) { document.documentElement.dataset.theme = 'light'; }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Este protótipo precisa de JavaScript para exibir a experiência completa.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

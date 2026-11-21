@@ -1,0 +1,66 @@
+/* ATRIUM — design tokens */
+:root {
+  --c-bg: #f3f0e9;
+  --c-surface: #ffffff;
+  --c-text: #202521;
+  --c-text-2: #666d66;
+  --c-green: #475b4d;
+  --c-champagne: #baa58a;
+  --c-border: #d9d8d0;
+  --c-accent: #475b4d;          /* interativo / texto de destaque */
+  --c-numeral: #8a7556;         /* champagne escurecido para numerais (contraste AA texto grande) */
+  --c-accent-contrast: #f4f1e9;
+  --c-ink: #202521;             /* seções imersivas */
+  --c-ink-text: #f4f1e9;
+  --c-ink-text-2: #b6bdb4;
+  --c-ink-line: rgba(244, 241, 233, 0.18);
+  --c-on-image: #f4f1e9;
+  --c-error: #9b3b2f;
+  --c-focus: #475b4d;
+  --c-scrim: rgba(17, 21, 18, 0.62);
+
+  --ff-display: 'Instrument Serif', 'Times New Roman', serif;
+  --ff-ui: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --fs-display: clamp(3.1rem, 1.2rem + 8vw, 11rem);
+  --fs-h1: clamp(2.6rem, 1.4rem + 5vw, 7rem);
+  --fs-h2: clamp(2.2rem, 1.3rem + 3.6vw, 5.25rem);
+  --fs-h3: clamp(1.55rem, 1.15rem + 1.5vw, 2.5rem);
+  --fs-numeral: clamp(3rem, 2rem + 4vw, 6.5rem);
+  --fs-lead: clamp(1.06rem, 0.98rem + 0.4vw, 1.32rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.78rem;
+
+  --gutter: clamp(1rem, 0.4rem + 2.8vw, 3.5rem);
+  --section-y: clamp(5.5rem, 3rem + 9vw, 12rem);
+  --max-w: 1680px;
+  --nav-h: 76px;
+
+  --ease-arch: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius-s: 2px;
+  --radius-m: 4px;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --c-bg: #151a17;
+  --c-surface: #202722;
+  --c-text: #f4f1e9;
+  --c-text-2: #afb9af;
+  --c-green: #8fa595;
+  --c-champagne: #c3af91;
+  --c-border: #333c35;
+  --c-accent: #c3af91;
+  --c-accent-contrast: #151a17;
+  --c-numeral: #c3af91;
+  --c-ink: #0f1311;
+  --c-ink-text: #f4f1e9;
+  --c-ink-text-2: #afb9af;
+  --c-ink-line: rgba(244, 241, 233, 0.14);
+  --c-error: #e59a8b;
+  --c-focus: #c3af91;
+  color-scheme: dark;
+}

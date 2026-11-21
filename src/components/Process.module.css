@@ -1,0 +1,117 @@
+.section { position: relative; }
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 1.5rem 4rem;
+}
+.title { font-size: var(--fs-h2); line-height: 0.95; letter-spacing: -0.015em; }
+.lede { color: var(--c-text-2); max-width: 36ch; justify-self: end; font-size: 1.02rem; }
+
+/* ---------- Desktop ---------- */
+.pin { height: 340vh; position: relative; }
+.sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: clip; }
+.stage {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 3.5vh, 3rem);
+  padding-top: calc(var(--nav-h) + 3vh);
+  padding-bottom: 4vh;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  min-height: 0;
+}
+.media { grid-column: 1 / span 6; position: relative; overflow: hidden; min-height: 0; }
+.mediaItem { position: absolute; inset: 0; }
+.mediaItem img { width: 100%; height: 100%; object-fit: cover; }
+
+.copy {
+  grid-column: 8 / span 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 0;
+}
+.bigNum {
+  display: block;
+  overflow: hidden;
+  font-size: clamp(5rem, 3rem + 9vw, 12rem);
+  color: var(--c-numeral);
+  height: 1em;
+  line-height: 1;
+}
+.bigNum span { display: block; }
+.copyText { display: grid; gap: 1.1rem; }
+.stepTitle { font-size: var(--fs-h3); line-height: 1.08; }
+.stepText { color: var(--c-text-2); max-width: 44ch; line-height: 1.7; }
+
+.timeline { position: relative; }
+.line { position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: var(--c-border); }
+.line span { position: absolute; inset: 0; background: var(--c-text); transform-origin: left; }
+.nodes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.node {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 0.75rem;
+  row-gap: 0.85rem;
+  justify-items: start;
+  text-align: left;
+  padding: 0 1rem 0.25rem 0;
+  min-height: 44px;
+  color: var(--c-text-2);
+  transition: color 0.4s;
+}
+.node:hover,
+.node[data-active] { color: var(--c-text); }
+.dot {
+  grid-column: 1 / -1;
+  width: 15px;
+  height: 15px;
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  transform: rotate(45deg) scale(0.7);
+  transition: transform 0.5s var(--ease-arch), background-color 0.4s, border-color 0.4s;
+}
+.node[data-done] .dot { background: var(--c-text); border-color: var(--c-text); transform: rotate(45deg) scale(0.55); }
+.node[data-active] .dot { background: var(--c-accent); border-color: var(--c-accent); transform: rotate(45deg) scale(1); }
+.nodeNum { font-size: 1.05rem; letter-spacing: 0; }
+.nodeName { font-weight: 500; font-size: 0.95rem; }
+
+@media (max-height: 720px) {
+  .stepText { font-size: 0.94rem; }
+  .bigNum { font-size: clamp(4rem, 2rem + 6vw, 8rem); }
+}
+
+/* ---------- Mobile / tablet ---------- */
+.vertical { padding-block: var(--section-y); }
+.vertical .header { grid-template-columns: 1fr; }
+.vertical .lede { justify-self: start; }
+
+.vList { position: relative; list-style: none; padding: 0 0 0 2.25rem; margin-top: clamp(3rem, 8vw, 4.5rem); display: grid; gap: clamp(3.5rem, 10vw, 5rem); }
+.vLine { position: absolute; left: 7px; top: 8px; bottom: 0; width: 1px; background: var(--c-border); }
+.vLine span { position: absolute; inset: 0; background: var(--c-text); transform-origin: top; }
+.vItem { position: relative; display: grid; gap: 0.9rem; }
+.vDot {
+  position: absolute;
+  left: calc(-2.25rem + 1px);
+  top: 6px;
+  width: 13px;
+  height: 13px;
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  transform: rotate(45deg);
+  transition: background-color 0.4s, border-color 0.4s;
+}
+.vItem[data-active] .vDot { background: var(--c-accent); border-color: var(--c-accent); }
+.vHead { display: flex; align-items: baseline; gap: 0.9rem; }
+.vNum { font-size: 2.6rem; color: var(--c-numeral); }
+.vName { font-weight: 500; }
+.vImage { aspect-ratio: 4 / 3; width: 100%; margin-top: 0.75rem; }

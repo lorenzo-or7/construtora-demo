@@ -1,0 +1,71 @@
+.section {
+  background: var(--c-ink);
+  color: var(--c-ink-text);
+  padding-block: var(--section-y);
+  --c-focus: #c3af91;
+}
+.section ::selection { background: #c3af91; color: #202521; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(2.5rem, 4vw, 4rem) clamp(1rem, 2vw, 2rem);
+}
+
+.side { grid-column: 1 / span 5; display: flex; flex-direction: column; gap: 1.5rem; }
+.title { font-size: var(--fs-h2); line-height: 0.95; letter-spacing: -0.015em; }
+.intro { color: var(--c-ink-text-2); max-width: 34ch; }
+
+.tabs { display: grid; margin-top: auto; border-top: 1px solid var(--c-ink-line); }
+.tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 64px;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--c-ink-line);
+  text-align: left;
+  font-family: var(--ff-display);
+  font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.35rem);
+  line-height: 1.1;
+  color: var(--c-ink-text-2);
+  transition: color 0.4s;
+}
+.tab:hover { color: var(--c-ink-text); }
+.tab[aria-selected='true'] { color: var(--c-ink-text); }
+.tabLine {
+  width: 0;
+  height: 1px;
+  background: #c3af91;
+  transition: width 0.7s var(--ease-arch);
+  flex: none;
+}
+.tab[aria-selected='true'] .tabLine { width: clamp(1.5rem, 3vw, 3rem); }
+
+.stage {
+  grid-column: 7 / span 6;
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.media { position: relative; aspect-ratio: 5 / 6; overflow: hidden; background: #2a312c; }
+.mediaItem { position: absolute; inset: 0; }
+.mediaItem img { width: 100%; height: 100%; object-fit: cover; }
+
+.copy { min-height: 13rem; }
+.copyInner { display: grid; gap: 1.1rem; }
+.headline { font-size: var(--fs-h3); line-height: 1.1; }
+.details { display: grid; gap: 1.1rem; }
+.text { color: var(--c-ink-text-2); max-width: 50ch; line-height: 1.7; }
+.uses { display: grid; gap: 0.25rem; font-size: var(--fs-small); }
+.uses span { color: #c3af91; }
+
+@media (max-width: 1023px) {
+  .side, .stage { grid-column: 1 / -1; }
+  .media { aspect-ratio: 4 / 3; }
+  .tabs { margin-top: 1rem; }
+}
+@media (max-width: 599px) {
+  .media { aspect-ratio: 1 / 1; }
+  .copy { min-height: 16rem; }
+}

@@ -1,0 +1,41 @@
+.section { padding-block: var(--section-y); background: var(--c-surface); border-top: 1px solid var(--c-border); }
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+.title { font-size: var(--fs-h2); line-height: 0.95; letter-spacing: -0.015em; }
+.note { font-size: var(--fs-small); color: var(--c-text-2); }
+
+.list { list-style: none; padding: 0; }
+
+/* Composição em degraus: cada pilar avança uma fração, como pavimentos escalonados */
+.row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) minmax(0, 30ch);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+  margin-left: calc(var(--step) * clamp(0rem, 6vw, 7rem));
+  border-top: 1px solid var(--c-border);
+}
+.row:last-child { border-bottom: 1px solid var(--c-border); }
+.glyph { width: 48px; height: 48px; color: var(--c-accent); }
+.name {
+  font-size: clamp(2.6rem, 1.5rem + 4.4vw, 6.25rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition: transform 0.8s var(--ease-arch), color 0.4s;
+}
+.row:hover .name { transform: translateX(0.5rem); }
+.text { color: var(--c-text-2); font-size: 0.97rem; line-height: 1.65; }
+
+@media (max-width: 767px) {
+  .row { grid-template-columns: 40px minmax(0, 1fr); margin-left: 0; row-gap: 0.75rem; }
+  .glyph { width: 36px; height: 36px; }
+  .text { grid-column: 2; }
+}

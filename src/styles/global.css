@@ -1,0 +1,121 @@
+@import './tokens.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--nav-h) + 8px);
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--ff-ui);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  transition: background-color 0.5s var(--ease-out), color 0.5s var(--ease-out);
+}
+
+img, picture, svg, video { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { font-family: var(--ff-display); font-weight: 400; line-height: 1; letter-spacing: -0.01em; text-wrap: balance; }
+p { text-wrap: pretty; }
+
+::selection { background: var(--c-champagne); color: #202521; }
+
+:focus-visible {
+  outline: 2px solid var(--c-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-s);
+}
+
+/* Scrollbar */
+html { scrollbar-color: var(--c-numeral) var(--c-bg); scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: var(--c-champagne); border: 3px solid var(--c-bg); border-radius: 10px; }
+
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: fixed; top: 12px; left: 12px; z-index: 200;
+  padding: 12px 18px; background: var(--c-text); color: var(--c-bg);
+  transform: translateY(-160%); transition: transform 0.2s;
+}
+.skip-link:focus { transform: none; }
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Revelar linhas de texto: cada linha é uma máscara */
+.line-mask { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.line-mask > span { display: block; will-change: transform; }
+
+/* Botões */
+.btn {
+  --btn-bg: var(--c-text);
+  --btn-fg: var(--c-bg);
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
+  min-height: 52px; padding: 0 1.6rem;
+  background: var(--btn-bg); color: var(--btn-fg);
+  font-size: 0.94rem; font-weight: 500; letter-spacing: 0.01em;
+  border-radius: var(--radius-s);
+  overflow: hidden; isolation: isolate;
+  transition: color 0.45s var(--ease-out), background-color 0.45s var(--ease-out), border-color 0.45s;
+}
+.btn::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: var(--c-accent);
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 0.5s var(--ease-arch);
+}
+.btn:hover::before { transform: scaleY(1); }
+.btn:hover { color: var(--c-accent-contrast); }
+.btn:active { transform: translateY(1px); }
+.btn svg { width: 18px; height: 18px; flex: none; transition: transform 0.45s var(--ease-out); }
+.btn:hover svg { transform: translateX(3px); }
+
+.btn--ghost {
+  --btn-bg: transparent; --btn-fg: currentColor;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+.btn--light { --btn-bg: var(--c-on-image); --btn-fg: #202521; }
+.btn--light::before { background: var(--c-champagne); }
+.btn--light:hover { color: #202521; }
+.btn--ghost.btn--on-image { color: var(--c-on-image); box-shadow: inset 0 0 0 1px rgba(244,241,233,0.55); }
+.btn--ghost.btn--on-image::before { background: var(--c-on-image); }
+.btn--ghost.btn--on-image:hover { color: #202521; }
+
+.link-underline {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 100% 1px;
+  transition: background-size 0.5s var(--ease-arch);
+  padding-bottom: 2px;
+}
+.link-underline:hover { background-size: 0% 1px; background-position: 100% 100%; }
+
+/* Rótulo funcional pequeno (sem caixa alta) */
+.meta { font-size: var(--fs-small); color: var(--c-text-2); letter-spacing: 0.01em; }
+.numeral { font-family: var(--ff-ui); font-weight: 200; font-variant-numeric: tabular-nums lining-nums; letter-spacing: -0.04em; line-height: 0.9; }
+
+/* View transition para troca de tema */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

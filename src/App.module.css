@@ -1,0 +1,39 @@
+.main { outline: none; display: block; }
+
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: var(--c-ink);
+  color: #c3af91;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  will-change: transform;
+}
+.curtainSymbol { width: 40px; height: 40px; }
+
+.loading {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  color: var(--c-text-2);
+  font-size: var(--fs-small);
+}
+
+.toTop {
+  position: fixed;
+  right: var(--gutter);
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background: var(--c-text);
+  color: var(--c-bg);
+  border-radius: var(--radius-s);
+  transition: background-color 0.35s, color 0.35s;
+}
+.toTop:hover { background: var(--c-accent); color: var(--c-accent-contrast); }
+.toTop svg { width: 20px; height: 20px; stroke-width: 1.5; }
